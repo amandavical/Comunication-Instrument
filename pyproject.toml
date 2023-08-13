@@ -1,0 +1,15 @@
+# pyproject.toml
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39']
+
+[tool.pydocstyle]
+match = '(?!test_|__init__).*\.py'
+convention = 'pep257'
+
+[tool.interrogate]
+quiet = false
+
+[tool.unimport]
+exclude = '__init__.py'

@@ -1,9 +1,10 @@
 """
-This module defines the Instrument class for simulating communication with a serial port.
+Simulated Instrument Module.
 
-The Instrument class provides a simulation of an instrument that communicates through a serial port.
-It generates random values for various attributes and can read messages from the serial port and
-respond accordingly.
+This module contains a simulated instrument class that reads and writes messages to a serial port.
+The class generates random values for status, type, voltage, temperature, and current.
+It can read messages from the serial port and respond accordingly.
+
 """
 import random
 
@@ -55,7 +56,7 @@ class Instrument:
             ValueError: If an unknown command is received.
         """
         message = self.ser.readline().decode()
-        command = message[:3]
+        command = message[0:3]
 
         if command == "STA":
             self.write_response(str(self.status))
@@ -64,7 +65,10 @@ class Instrument:
         elif command == "VOL":
             self.write_response(str(self.voltage))
         elif command == "TMP":
-            self.write_response(str(self.temperature))
+            new_temperature: int = random.randint(0, 85)
+
+            self.write_response(str(new_temperature))
+            self.temperature = new_temperature
         elif command == "CUR":
             self.write_response(str(self.current))
         else:
@@ -81,7 +85,7 @@ class Instrument:
             response (str): The response to be sent.
 
         Example:
-          >>>  instrument = Instrument(ser)
-          >>>  instrument.write_response("Response message")
+            instrument1 = Instrument(ser)
+            instrument1.write_response("Response message")
         """
         self.ser.write(bytearray(response + "\r\n", "utf-8"))

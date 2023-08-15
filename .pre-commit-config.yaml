@@ -5,14 +5,6 @@ repos:
       - id: isort
         additional_dependencies: ["toml"]
 
-  - repo: https://github.com/psf/black
-    rev: 23.3.0
-    hooks:
-      - id: black
-        additional_dependencies: ["toml"]
-        args:
-          - --config=pyproject.toml
-
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
@@ -22,7 +14,7 @@ repos:
       - id: check-merge-conflict
 
   - repo: https://github.com/pre-commit/pygrep-hooks
-    rev: v1.9.0 # Use the ref you want to point at
+    rev: v1.9.0
     hooks:
       - id: python-use-type-annotations
       - id: python-check-mock-methods
@@ -35,7 +27,7 @@ repos:
         stages: [commit-msg]
 
   - repo: https://github.com/pycqa/pydocstyle
-    rev: 6.3.0 # pick a git hash / tag to point to
+    rev: 6.3.0
     hooks:
       - id: pydocstyle
         additional_dependencies: ["tomli"]

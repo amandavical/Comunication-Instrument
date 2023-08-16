@@ -7,9 +7,11 @@ temperature_collection module and checks if they are within permissible limits u
 
 from data_collection.current_collection import collect_currents
 from data_collection.temperature_collection import collect_temperatures
+from data_collection.voltage_collection import collect_voltages
 from utilities.current_check import check_current_threshold
 from utilities.temperature_check import (TemperatureTooHighError,
                                          check_temperatures)
+from utilities.voltage_check import VoltageTooHighError, check_voltages
 
 
 def main():
@@ -34,5 +36,17 @@ def main():
     for value in currents:
         check_current_threshold(value)
 
-if _name_ == "_main_":
+    print("---------------------------------------------------")
+
+    try:
+        voltages_list = collect_voltages()
+        print("Collected Voltages:", voltages_list)
+        check_voltages(voltages_list)
+        print("All voltages are within limits.")
+    except VoltageTooHighError as e:
+        print("Error:", e)
+
+    print("")
+
+if __name__ == "__main__":
     main()

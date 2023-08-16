@@ -1,6 +1,4 @@
-"""
-This module contains a function to simulate connecting to an instrument and collecting 30 random electric currents.
-"""
+"""This module contains a function to simulate connecting to an instrument and collecting 30 random electric currents."""
 import serial
 
 from modules.comunication_client import Client

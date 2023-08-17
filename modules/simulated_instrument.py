@@ -59,18 +59,25 @@ class Instrument:
         command = message[0:3]
 
         if command == "STA":
-            self.write_response(str(self.status))
+            new_status: int = random.randint(0, 0xFFFFFFFF)
+            self.write_response(str(new_status))
+            self.status = new_status
         elif command == "TYP":
-            self.write_response(self.type)
+            new_type: str = random.choice(["a", "b", "c", "abc"])
+            self.write_response(new_type)
+            self.type = new_type
         elif command == "VOL":
-            self.write_response(str(self.voltage))
+            new_voltage: int = random.randint(0, 220)
+            self.write_response(str(new_voltage))
+            self.voltage = new_voltage
         elif command == "TMP":
             new_temperature: int = random.randint(0, 85)
-
             self.write_response(str(new_temperature))
             self.temperature = new_temperature
         elif command == "CUR":
-            self.write_response(str(self.current))
+            new_current: int = random.randint(0, 2000)
+            self.write_response(str(new_current))
+            self.current = new_current
         else:
             raise ValueError("Unknown command: " + command)
 

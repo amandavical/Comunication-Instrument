@@ -67,7 +67,8 @@ def main():
     print("All the data is available in the dictionary data:")
 
     for key in data.keys():
-        print(key + ":" , data[key])
+        print(key + ":", data[key])
+
 
 if __name__ == "__main__":
     main()

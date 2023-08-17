@@ -6,6 +6,7 @@ temperature_collection module and checks if they are within permissible limits u
 """
 
 from data_collection.current_collection import collect_currents
+from data_collection.status_collection import collect_statuses
 from data_collection.temperature_collection import collect_temperatures
 from data_collection.voltage_collection import collect_voltages
 from utilities.current_check import check_current_threshold
@@ -46,7 +47,27 @@ def main():
     except VoltageTooHighError as e:
         print("Error:", e)
 
-    print("")
+    print("---------------------------------------------------")
+
+    try:
+        statuses_list = collect_statuses()
+        print("Collected Statuses:", statuses_list)
+    except:
+        print("An error occurred while colleting the statuses")
+
+    print("---------------------------------------------------")
+
+    data = {
+        "temperature": temperature_list,
+        "voltage": voltages_list,
+        "current": currents,
+        "status": statuses_list
+    }
+
+    print("All the data is available in the dictionary data:")
+
+    for key in data.keys():
+        print(key + ":" , data[key])
 
 if __name__ == "__main__":
     main()

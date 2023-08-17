@@ -9,6 +9,7 @@ from other modules and performs necessary checks.
 """
 
 from data_collection.current_collection import collect_currents
+from data_collection.type_collection import collect_types
 from data_collection.status_collection import collect_statuses
 from data_collection.temperature_collection import collect_temperatures
 from data_collection.voltage_collection import collect_voltages
@@ -60,11 +61,20 @@ def main():
 
     print("---------------------------------------------------")
 
+    try:
+        types_list = collect_types()
+        print("Collected Types:", types_list)
+    except:
+        print("An error occurred while colleting the types")
+
+    print("---------------------------------------------------")
+
     data = {
         "temperature": temperature_list,
         "voltage": voltages_list,
         "current": currents,
-        "status": statuses_list
+        "status": statuses_list,
+        "type": types_list
     }
 
     print("All the data is available in the dictionary data:")

@@ -1,8 +1,11 @@
 """
 Comunication-Instrument Main Module.
 
-This module serves as the entry point for the Comunication-Instrument project. It collects temperatures using the
+This module serves as the entry point for the Communication-Instrument project. It collects temperatures using the
 temperature_collection module and checks if they are within permissible limits using the temperature_check module.
+It also collects current values, voltage values, and status information
+from other modules and performs necessary checks.
+
 """
 
 from data_collection.current_collection import collect_currents

@@ -1,16 +1,28 @@
+"""
+Current Test Module.
+
+This module contains functions to simulate the collection of 30 random electric currents and the correct use of the
+values defined in the collect_currents and check_current_threshold functions.
+"""
 import unittest
 import random
-from unittest.mock import MagicMock, patch
 from data_collection.current_collection import collect_currents
-from modules.comunication_client import Client
-from modules.simulated_instrument import Instrument
 from utilities.current_check import check_current_threshold
+from unittest.mock import MagicMock, patch
+
 
 class TestCurrentCollector(unittest.TestCase):
     @patch("modules.comunication_client.Client")
     @patch("modules.simulated_instrument.Instrument")
     @patch("data_collection.current_collection.check_current_threshold")
     def test_collect_currents_above_limit(self, mock_check_current_threshold, mock_instrument, mock_client):
+        """
+        Test collection of 30 random electrical currents between 0 and 2000.
+
+        Returns:
+            list[int]: List containing electric currents values (0, 2000).
+
+        """
         mock_client_instance = MagicMock()
         mock_instrument_instance = MagicMock()
 
@@ -29,6 +41,13 @@ class TestCurrentCollector(unittest.TestCase):
     @patch("modules.simulated_instrument.Instrument")
     @patch("data_collection.current_collection.check_current_threshold")
     def test_collect_currents_below_limit(self, mock_check_current_threshold, mock_instrument, mock_client):
+        """
+        Test collection of 30 random electrical currents between 0 and 24 for error message verification.
+
+        Returns:
+            list[int]: List containing electric currents values (0, 24).
+
+        """
         mock_client_instance = MagicMock()
         mock_instrument_instance = MagicMock()
 

@@ -34,7 +34,7 @@ class TestCurrentCollector(unittest.TestCase):
         result = collect_currents()
 
         for current in result:
-            self.assertTrue(25 < current < 2000)
+            self.assertTrue(25 < current < 800)
             print(f"Collected currents: {current}")
 
     @patch("modules.comunication_client.Client")

@@ -9,9 +9,9 @@ from other modules and performs necessary checks.
 """
 
 from data_collection.current_collection import collect_currents
-from data_collection.type_collection import collect_types
 from data_collection.status_collection import collect_statuses
 from data_collection.temperature_collection import collect_temperatures
+from data_collection.type_collection import collect_types
 from data_collection.voltage_collection import collect_voltages
 from utilities.current_check import check_current_threshold
 from utilities.temperature_check import (TemperatureTooHighError,

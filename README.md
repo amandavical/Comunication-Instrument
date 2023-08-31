@@ -100,6 +100,16 @@ communication-instrument/
 │   ├── temperature_check.py
 │   └── voltage_check.py
 │
+├── tests/
+│   ├── test_currentchcek.py
+│   ├── test_currentcollection.py
+│   ├── test_statuscollection.py
+│   ├── test_temperaturecheck.py
+│   ├── test_temperaturecollection.py
+│   ├── test_typecollection.py
+│   ├── test_voltagecheck.py
+│   └── test_voltagecollection.py
+│
 ├── .pre-commit-config.yaml
 ├── main.py
 ├── pyproject.toml

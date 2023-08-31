@@ -25,7 +25,7 @@ def collect_types():
     for _ in range(1, 6):
         client.write_request("TYP")
         instrument.read_message()
-        type = str(client.read_response())
-        types.append(type)
+        typ = str(client.read_response())
+        types.append(typ)
 
     return types
